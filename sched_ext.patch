@@ -1232,7 +1232,7 @@ new file mode 100755
 index 000000000000..a3fa3020b3e7
 --- /dev/null
 +++ b/kernel/sched/ext.c
-@@ -0,0 +1,3469 @@
+@@ -0,0 +1,3464 @@
 +/* SPDX-License-Identifier: GPL-2.0 */
 +/*
 + * BPF extensible scheduler class: Documentation/scheduler/sched-ext.rst
@@ -1242,11 +1242,6 @@ index 000000000000..a3fa3020b3e7
 + * Copyright (c) 2022 David Vernet <dvernet@meta.com>
 + */
 +
-+#include <linux/jiffies.h>
-+#include <linux/kernel.h>
-+#include <linux/sched.h>
-+#include <linux/cgroup.h>
-+#include <linux/sched/deadline.h>
 +#include "slim.h"
 +#define CLUSTER_SEPARATE
 +
@@ -5233,10 +5228,7 @@ new file mode 100755
 index 000000000000..8faa2a2d2deb
 --- /dev/null
 +++ b/kernel/sched/slim.h
-@@ -0,0 +1,29 @@
-+#include <linux/atomic.h>
-+#include <linux/spinlock.h>
-+#include <linux/sched.h>
+@@ -0,0 +1,26 @@
 +#ifndef __SLIM_H
 +#define __SLIM_H
 +
