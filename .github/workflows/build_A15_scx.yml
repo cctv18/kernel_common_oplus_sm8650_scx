@@ -32,6 +32,14 @@ on:
         options:
           - 'true'
           - 'false'
+      debug_enable:
+        description: '调试开关(是否开启hmpatch)'
+        required: true
+        type: choice
+        default: 'true'
+        options:
+          - 'true'
+          - 'false'
       kernel_suffix:
         description: '内核后缀(留空默认,开头别加连字符)'
         required: false
@@ -180,10 +188,12 @@ jobs:
             echo "正在添加风驰内核补丁…"
             wget https://raw.githubusercontent.com/cctv18/kernel_common_oplus_sm8650_scx/refs/heads/main/sched_ext.patch
             patch -p1 -F 5 < sched_ext.patch || true
-            cd drivers
-            wget https://raw.githubusercontent.com/cctv18/kernel_common_oplus_sm8650_scx/refs/heads/main/hmpatch.c
-            if ! grep -q "hmpatch.o" Makefile; then
-              echo "obj-y += hmpatch.o" >> Makefile
+            if [[ ${{ github.event.inputs.debug_enable }} == "true" ]]; then
+              cd drivers
+              wget https://raw.githubusercontent.com/cctv18/kernel_common_oplus_sm8650_scx/refs/heads/main/hmpatch.c
+              if ! grep -q "hmpatch.o" Makefile; then
+                echo "obj-y += hmpatch.o" >> Makefile
+              fi
             fi
           fi
           
