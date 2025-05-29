@@ -5431,14 +5431,3 @@ index 986b2961b78f..9b4fffd7acd8 100755
 +EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_task_fits_cpu_scx);
 +EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_scx_cpu_exclusive);
 +EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_scx_consume_dsq_allowed);
-diff --git a/kernel/sched/Makefile b/kernel/sched/Makefile
-index 5ffb0e1a47ae..e9c3a1e31424 100644
---- a/kernel/sched/Makefile
-+++ b/kernel/sched/Makefile
-@@ -35,3 +35,6 @@ obj-y += fair.o
- obj-y += build_policy.o
- obj-y += build_utility.o
- obj-$(CONFIG_ANDROID_VENDOR_HOOKS) += vendor_hooks.o
-+obj-$(CONFIG_HMBIRD_SCHED) += ext.o
-+obj-$(CONFIG_HMBIRD_SCHED) += slim_sysctl.o
-+obj-$(CONFIG_HMBIRD_SCHED) += hmbird_export.o
