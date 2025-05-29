@@ -1,0 +1,1 @@
+# kernel_common_oplus_sm8650_scx
