@@ -182,7 +182,7 @@ jobs:
             patch -p1 -F 5 < sched_ext.patch || true
             cd drivers
             wget https://raw.githubusercontent.com/cctv18/kernel_common_oplus_sm8650_scx/refs/heads/main/hmpatch.c
-            if [[ ! grep -q "hmpatch.o" Makefile ]]; then
+            if ! grep -q "hmpatch.o" Makefile; then
               echo "obj-y += hmpatch.o" >> Makefile
             fi
           fi
